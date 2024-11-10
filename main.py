@@ -7,3 +7,16 @@ print('--------------------------------------')
 print(f"The encoded tokens: \n\n {tokens} \n\n Length of tokens: {len(tokens)}")
 print('--------------------------------------')
 
+"""
+Now we need to count all the most frequently occuring pairs in the tokens list.
+Use of zip -> we will use zip to create pairs of consequential numbers. Zip stops iterating when reaching end of smallest sized list
+"""
+def get_freq(ids: list):
+    freq_map = {}
+
+    for pair in zip(ids, ids[1:]):
+        freq_map[pair] = freq_map.get(pair, 0) + 1
+    return freq_map
+
+frequencies = get_freq(tokens)
+# print(sorted(((v,k) for k, v in frequencies.items()), reverse=True))
